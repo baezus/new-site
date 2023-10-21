@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import Card from '../Card';
 
 const Portfolio = () => {
     return (
-        <div className="portfolio-container">
-            <p>You pressed portfolio</p>
+        <div>
+        <Card />
+        <Card />
+        <Card />
         </div>
 )};
 

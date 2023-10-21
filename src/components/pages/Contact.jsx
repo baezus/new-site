@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ControlledForm from "./ControlledForm";
+import ControlledForm from "../ControlledForm";
 
 
 const Contact = () => {

@@ -1,7 +1,7 @@
-import Sammy from "../img/sammy.jpeg";
-import "../css/main.css";
+import Sammy from "../../img/sammy.jpeg";
+import "../../css/main.css";
 import React, { useState, useEffect } from 'react';
-import Options from "../components/Options";
+import Options from "../Options";
 
 export default function Welcome() {
     const [butt, setButt] = useState();

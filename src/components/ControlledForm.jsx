@@ -1,55 +1,92 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
+import emailjs from '@emailjs/browser';
 
 function ControlledForm() {
-    const [name, setName] = useState('');
-    const [info, setInfo] = useState('');
-    const [msg, setMsg] = useState('');
+    const form = useRef();
+    const [to_name, setTo_name] = useState('');
+    const [from_name, setFrom_name] = useState('');
+    const [message, setMessage] = useState('');
+    const [cancel, setCancel] = useState(false);
 
     const handleChange = (event) => {
         let val = event.target.name;
-        if (val === "nameLabel") {
-            setName(event.target.value);
-        } else if (val === "infoLabel") {
-            setInfo(event.target.value);
-        } else if (val == "msgArea") {
-            setMsg(event.target.value);
+        if (val === "to_name") {
+            setTo_name(event.target.value);
+        } else if (val === "from_name") {
+            setFrom_name(event.target.value);
+        } else if (val == "message") {
+            setMessage(event.target.value);
         }
+    }
+
+    const handleCancel = (event) => {
+        event.preventDefault();
     }
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        alert('A value was submitted: ' + name + ' ' + ' with the info: ' + info + 'and message: ' + msg);
+        alert('A value was submitted: ' + to_name + ' ' + ' with the info: ' + from_name + ' and message: ' + message);
     }
 
+    const sendEmail = (e) => {
+        e.preventDefault();
+
+        alert('sending email');
+
+        emailjs.sendForm('service_z07c2y8', 'default', form.current, 'EIYrNMaP50haIWYG_')
+            .then((result) => {
+                console.log(result.text);
+            }, (error) => {
+                console.log(error.text);
+            });
+    };
+
     return (
-        <form onSubmit={handleSubmit}>
+
+        <form ref={form} onSubmit={sendEmail}>
+        <div className="field">
             <label>
-                Name: 
+                Name
                 <input 
+                  className="control"
                   type="text"
-                  name="nameLabel" 
-                  value={name} 
+                  placeholder="Your Name"
+                  name="to_name" 
+                  value={to_name} 
                   onChange={handleChange}/>
             </label>
+        </div>
+        <div className="field">
             <label>
-                Contact Information:
+                Your Email Address
                 <input 
                   type="text"
-                  name="infoLabel"
-                  value={info} 
+                  placeholder="your@email.address"
+                  className="control"
+                  name="from_name"
+                  value={from_name} 
                   onChange={handleChange}
                   />
             </label>
+        </div>
+        <div className="field">
             <label>
-                Message:
+                Message
                 <input 
                   type="textArea"
-                  name="msgArea"
-                  value={msg} 
+                  className="control"
+                  placeholder="What do you want to say?"
+                  name="message"
+                  value={message}
                   onChange={handleChange}
                   />
             </label>
-            <input type="submit" value="Submit" />
+        </div>
+        <div className="field is-grouped">
+            <div className="control">
+                <input type="submit" className="button is-link" value="Send" />
+            </div>
+        </div>
         </form>
     )
 }

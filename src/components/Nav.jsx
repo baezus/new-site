@@ -7,16 +7,16 @@ function Nav() {
         <div>
             <nav>
                 <ul className='nav-links'>
-                    <A className='Home' href='/'>
+                    <A className='Home button is-link' type="button" href='/'>
                         <li>Home</li>
                     </A>
-                    <A className='Contact' href='/contact'>
+                    <A className='Contact button is-link' href='/contact'>
                         <li>Contact</li>
                     </A>
-                    <A className='Resume' href='/resume'>
+                    <A className='Resume button is-link' href='/resume'>
                         <li>Resume</li>
                     </A>
-                    <A className='Portfolio' href='/portfolio'>
+                    <A className='Portfolio button is-link' href='/portfolio'>
                         <li>Portfolio</li>
                     </A>
                 </ul>

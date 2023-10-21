@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import "./Welcome";
+import "./pages/Welcome";
 
 const Options = ({ setButt }) => {
     const [which, setWhich] = useState("");

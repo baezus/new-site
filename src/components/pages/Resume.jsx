@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import Card from '../Card';
 
 const Resume = () => {
     return (
-        <div className="resume-container">
-            <p>You pressed resume</p>
+        <div>
+        <Card />
         </div>
 )};
 
 export default Resume
+
