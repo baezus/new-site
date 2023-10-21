@@ -6,7 +6,12 @@ const Options = ({ setButt }) => {
     const [click, setClick] = useState(false);
 
     useEffect(()=>{
-        console.log("clicked: "+ which);
+        if (click){
+          console.log("click true: "+ which);
+          setClick(false);
+        } else {
+          console.log("click false");
+        };
     }, [click]);
 
     const handleClick = (e) => (button) => {
@@ -18,9 +23,9 @@ const Options = ({ setButt }) => {
     return(
         <div className="main"> 
         <div className="buttons">
-          <button name="contact" className="button is-primary" onClick={handleClick()}>contact</button>
-          <button name="resume" onClick={handleClick()} className="button is-link">resume</button>
-          <button name="portfolio" onClick={handleClick()} className="button is-info">portfolio</button>
+          <button type="button" name="contact" className="button is-primary" onClick={handleClick()}>contact</button>
+          <button type="button" name="resume" onClick={handleClick()} className="button is-link">resume</button>
+          <button type="button" name="portfolio" onClick={handleClick()} className="button is-info">portfolio</button>
         </div>
       </div>
     )
